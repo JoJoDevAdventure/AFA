@@ -18,7 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Collection
         fields = (
             "id",
             "name",
