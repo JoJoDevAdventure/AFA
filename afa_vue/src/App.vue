@@ -7,41 +7,38 @@
   <div class="main">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#">
+        <router-link to="/" class="navbar-brand">
           <img src="./assets/AFALogo.png"  width="60" height="60" class="d-inline-block align-top" alt="">
-        </a>
+        </router-link>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
+          <ul id="sidemenu" class=" navbar-nav mx-auto">
             <li class="nav-item">
-              <router-link to="/home" class="nav-link">Home</router-link>
+              <router-link to="/" class="nav-link" @click="closemenu">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/about" class="nav-link">About</router-link>
+              <router-link to="/about" class="nav-link" @click="closemenu">About</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/collections" class="nav-link">Collections</router-link>
+              <router-link to="/collections" class="nav-link" @click="closemenu">Collections</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/testimonials" class="nav-link">Testimonials</router-link>
+              <a href="#testimonials-section" class="nav-link" @click="closemenu">Testimonials</a>
             </li>
+            <i class="fas fa-times" @click="closemenu"></i>
           </ul>
 
           <div class="d-flex">
-            <router-link to="/cart" class="cart" type="button">
-              <i class="fa-regular fa-cart-shopping fa-bounce" style="color: #ffffff;"></i>
+            <router-link to="/cart" class="cart" type="button" @click="closemenu">
+              <i class="fa-regular fa-cart-shopping fa-bounce" style="color: #ffffff;" ></i>
               <span style="color: #ffffff;">({{ cartTotalLength }})</span>
             </router-link>
             <router-link to="/contact" class="btn btn-outline-gradient">
               Contact us
             </router-link>
           </div>
-        </div>
+
+          <i class="fas fa-bars" @click="openmenu"></i>
+
       </nav>
     </div>
     <router-view />
@@ -57,7 +54,7 @@
             <!-- Grid column -->
             <div class="col-md-2">
               <h6 class="text-uppercase font-weight-bold">
-                <a href="#!" class="text-white">About us</a>
+                <router-link to="/about" class="text-white">About us</router-link>
               </h6>
             </div>
             <!-- Grid column -->
@@ -65,7 +62,7 @@
             <!-- Grid column -->
             <div class="col-md-2">
               <h6 class="text-uppercase font-weight-bold">
-                <a href="#!" class="text-white">Products</a>
+                <router-link to="/collections" class="text-white">Products</router-link>
               </h6>
             </div>
             <!-- Grid column -->
@@ -73,23 +70,7 @@
             <!-- Grid column -->
             <div class="col-md-2">
               <h6 class="text-uppercase font-weight-bold">
-                <a href="#!" class="text-white">Awards</a>
-              </h6>
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2">
-              <h6 class="text-uppercase font-weight-bold">
-                <a href="#!" class="text-white">Help</a>
-              </h6>
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2">
-              <h6 class="text-uppercase font-weight-bold">
-                <a href="#!" class="text-white">Contact</a>
+                <router-link to="/contact" class="text-white">Contact</router-link>
               </h6>
             </div>
             <!-- Grid column -->
@@ -105,10 +86,8 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                distinctio earum repellat quaerat voluptatibus placeat nam,
-                commodi optio pariatur est quia magnam eum harum corrupti
-                dicta, aliquam sequi voluptate quas.
+                We are a band of creators & Artists who love to transform
+              boring sneakers into masterpieces. We only deliver high quality and unique designs.
               </p>
             </div>
           </div>
@@ -124,16 +103,10 @@
             <i class="fab fa-twitter"></i>
           </a>
           <a href="" class="text-white me-4">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="text-white me-4">
             <i class="fab fa-instagram"></i>
           </a>
           <a href="" class="text-white me-4">
             <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-github"></i>
           </a>
         </section>
         <!-- Section: Social -->
@@ -164,7 +137,7 @@
       this.cart = this.$store.state.cart
     },
     beforeCreate() {
-      this.$store.commit('initializeStore')
+      this.$store.commit('InitializeStore')
     },
     computed: {
       cartTotalLength() {
@@ -174,14 +147,53 @@
         }
         return totalLength
       }
+    },
+
+    methods: {
+      openmenu() {
+        var sidemenu = document.getElementById("sidemenu");
+        if (sidemenu) {
+        sidemenu.style.right = "0";
+      }
+      },
+
+      closemenu() {
+        var sidemenu = document.getElementById("sidemenu");
+        sidemenu.style.right = "-200px";
+      },
+
     }
+
+
   }
+  var sidemenu = document.getElementById("sidemenu");
+function openmenu() {
+    sidemenu.style.right = "0";
+}
+function closemenu() {
+    sidemenu.style.right = "-200px";
+}
+
 
 </script>
 
 <style lang="scss">
 @import '../node_modules/bootstrap';
 @import "~@fortawesome/fontawesome-free/css/all.css";
+
+nav .fas {
+  color: white;
+  display: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 84px;
+    background-color: #1B1B1B;
+}
 
 .spinner-wrapper {
   background-color: #0E0F0A;
@@ -233,10 +245,45 @@
   text-decoration: none;
   border: none;
   margin-right: 20px;
+  margin-top: 10px;
 }
 
 .cart i {
   position: relative;
   zoom: 130%;
+}
+
+@media only screen and (max-width: 992px) { 
+  nav .fas {
+        display: block;
+        font-size: 25px;
+    }
+
+  nav ul {
+    background-image: linear-gradient(to right, #9570F7, #FD6756);
+    position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+  }
+
+  nav ul .fas {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+  
+
+  nav ul li {
+    color: white;
+        display: block;
+        margin: 10px;
+        margin-left: 25px;
+    }
 }
 </style>
