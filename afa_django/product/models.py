@@ -6,7 +6,7 @@ from PIL import Image
 
 
 class Collection(models.Model):
-    name = models.CharField (max_length=255)
+    name = models.CharField(max_length=255)
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
     image = models.ImageField (upload_to= 'uploads/', blank=True, null=True)
