@@ -10,7 +10,7 @@ export default createStore({
   getters: {
   },
   mutations: {
-    initilizeStore(state) {
+    InitializeStore(state) {
       if (localStorage.getItem('cart')) {
         state.cart = JSON.parse(localStorage.getItem('cart'))
       } else {
@@ -23,6 +23,10 @@ export default createStore({
     },
     setIsLoading(state, status) {
       state.isLoading = status
+    },
+    ClearCart(state) {
+      state.cart = {items:[]}
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   actions: {
