@@ -6,7 +6,7 @@
           <div class="col-lg-6">
             <h1 class="display-4">New<br>Collection <br> <span>Corales</span></h1>
             <p class="lead">From under the sea<br>To right under your feet</p>
-            <button class="btn btn-primary btn-lg btn-outline-gradient ">Shop now</button>
+            <router-link to="/corales" class="btn btn-primary btn-lg btn-outline-gradient">Shop now</router-link>
           </div>
           <div class="col-lg-6">
           </div>
@@ -19,23 +19,20 @@
         <h1 class="text-left">Popular <span>products</span> </h1>
         <div class="row">
 
-          <div class="col-md-6 col-lg-3"
-            v-for="product in latestProducts"
-            v-bind:key="product.id"
+          <div class="col-md-6 col-lg-3" v-for="product in latestProducts" v-bind:key="product.id"
             v-bind:product="product">
 
-            <router-link class="card"
-            v-bind:to="product.get_absolute_url">
+            <router-link class="card" v-bind:to="product.get_absolute_url">
               <img :src="product.get_thumbnail" class="card-img-top" alt="Product 1">
               <div class="card-body">
-                <h5 class="card-title text-white">{{product.title}}</h5>
+                <h5 class="card-title text-white">{{ product.title }}</h5>
                 <div class="d-flex justify-content-between align-items-center">
-                  <span class="price"> {{product.price}} DT</span>
+                  <span class="price"> {{ product.price }} DT</span>
                   <router-link v-bind:to="product.get_absolute_url" class="btn btn-primary">Add to Cart</router-link>
                 </div>
               </div>
             </router-link>
-            
+
           </div>
         </div>
       </div>
@@ -49,13 +46,10 @@
             Collections</router-link>
         </div>
         <div class="row">
-          <div class="col-md-4"
-            v-for="collection in latestCollections"
-            v-bind:key="collection.id"
+          <div class="col-md-4" v-for="collection in latestCollections" v-bind:key="collection.id"
             v-bind:collection="collection">
 
-            <router-link class="card"
-              v-bind:to="collection.get_absolute_url">
+            <router-link class="card" v-bind:to="collection.get_absolute_url">
               <img :src="collection.get_thumbnail" class="card-img-top" alt="Collection 1">
               <div class="card-body">
                 <h5 class="card-title text-white">{{ collection.name }} <span>&rarr;</span></h5>
@@ -77,7 +71,7 @@
               <div class="card-outline">
                 <i class="fas fa-icon fa-regular fa-paintbrush fa-fade"></i>
                 <h5 class="card-title">Custom model</h5>
-                <p class="card-description">Description of Service 1</p>
+                <p class="card-description">Unlock your unique style with our Custom Model service. Personalize your Air Force Ones with your choice of colors, patterns, and designs</p>
               </div>
             </div>
           </div>
@@ -86,7 +80,7 @@
               <div class="card-outline">
                 <i class="fas fa-icon fa-regular fa-truck-fast fa-bounce"></i>
                 <h5 class="card-title">Free Shipping</h5>
-                <p class="card-description">Description of Service 2</p>
+                <p class="card-description">Enjoy hassle-free shopping with our Free Shipping service. We deliver your custom Air Force Ones straight to your doorstep.</p>
               </div>
             </div>
           </div>
@@ -95,7 +89,7 @@
               <div class="card-outline">
                 <i class="fas fa-icon fa-regular fa-headset fa-shake"></i>
                 <h5 class="card-title">Customer Service</h5>
-                <p class="card-description">Description of Service 3</p>
+                <p class="card-description">our customers are at the heart of everything we do. Our dedicated Customer Service team is here to assist you at every step of your journey. </p>
               </div>
             </div>
           </div>
@@ -226,7 +220,7 @@ export default {
   width: 100%;
   background-size: cover;
   background-position: center;
-  height: 80vh;
+  height: 90vh;
 }
 
 #header-section .col-lg-6 {
@@ -301,9 +295,9 @@ export default {
   box-shadow: none;
 }
 
-#popular-products-section .card button:hover{
+#popular-products-section .card button:hover {
   background-color: #0E0F0A;
-  border-width:1px ;
+  border-width: 1px;
   border-color: #4400FF;
 }
 
@@ -425,8 +419,8 @@ export default {
   margin-top: 200px;
 }
 
-#about-us .small-text{
-margin-top: 50px;
+#about-us .small-text {
+  margin-top: 50px;
 }
 
 #about-us h1 {
@@ -456,13 +450,14 @@ margin-top: 50px;
 }
 
 #testimonials-section {
-  margin-top:  100px;
+  margin-top: 100px;
 }
 
 #testimonials-section .testimonial-title {
   font-size: 58px;
   line-height: 1.2;
-  color: white;;
+  color: white;
+  ;
   margin-bottom: 50px;
 }
 
@@ -515,7 +510,7 @@ margin-top: 50px;
   background-color: #343434;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1280px) {
   #header-section {
     background-image: url(../assets/Background1280.jpg);
   }
@@ -529,6 +524,7 @@ margin-top: 50px;
   #header-section {
     margin-top: 5%;
     margin-bottom: 10%;
+    background-image: url(../assets/Background1280.jpg);
   }
 
   #header-section .col-lg-6 {
@@ -588,7 +584,7 @@ margin-top: 50px;
     border: none;
     box-shadow: 0 2px 8px 0 #BD5353;
     transition: box-shadow 0.3s ease;
-    margin: 0px 50px 50px;
+    margin: 0px 0px 50px;
   }
 
   #popular-products-section button {
@@ -598,6 +594,7 @@ margin-top: 50px;
 
   #popular-products-section .price {
     color: white;
+
   }
 
   #popular-products-section .card:hover {
@@ -715,11 +712,13 @@ margin-top: 50px;
     margin-top: 100px;
   }
 
-  #about-us .about-us-image{
+  #about-us .about-us-image {
     height: 65%;
+    display: none;
   }
 
   #about-us .small-text {
+    margin-top: 0px;
     margin-top: 0px;
     font-size: 18px;
     text-align: left;
@@ -753,14 +752,14 @@ margin-top: 50px;
     width: 65%;
   }
 
-  #about-us form button{
+  #about-us form button {
     margin: 0 auto;
     margin-bottom: 10px;
     width: 30%;
   }
 
   #testimonials-section {
-    margin-top: 50px;
+    margin-top: 100px;
   }
 
   #testimonials-section .testimonial-title {
@@ -820,8 +819,13 @@ margin-top: 50px;
     transition: 0.5s;
     background-color: #343434;
   }
-}
 
+  @media only screen and (max-width: 450px) {
+  #header-section {
+    background-image: url(../assets/Background400.jpg);
+  }
+}
+}
 </style>
 
 
