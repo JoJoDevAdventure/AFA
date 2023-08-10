@@ -53,6 +53,7 @@
 
 #collection-details .row {
   align-items: center;
+  justify-content: center;
 }
 
 #collection-details .card {
@@ -61,6 +62,7 @@
   box-shadow: 0 2px 8px 0 #BD5353;
   transition: box-shadow 0.3s ease;
   text-decoration: none;
+  margin-bottom: 30px;
 }
 
 #collection-details button {

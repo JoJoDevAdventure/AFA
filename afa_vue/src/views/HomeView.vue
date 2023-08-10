@@ -124,28 +124,25 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card testimonial-card">
-              <img src="path_to_customer_image_1" alt="Customer 1" class="rounded-image">
-              <p class="customer-name">John Doe</p>
-              <p class="review-description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat eros
-                ac nisi pulvinar, at consequat enim gravida."</p>
+              <img src="../assets/person1.jpg" alt="Customer 1" class="rounded-image">
+              <p class="customer-name">Sarra Bna</p>
+              <p class="review-description">"Qualité de design top, packaging w presentation luxe, Je recommande!"</p>
               <img src="../assets/stars.svg" alt="Star Rating" class="star-rating">
             </div>
           </div>
           <div class="col-md-4">
             <div class="card testimonial-card">
-              <img src="path_to_customer_image_2" alt="Customer 2" class="rounded-image">
-              <p class="customer-name">Jane Smith</p>
-              <p class="review-description">"Ut fringilla, urna nec condimentum pellentesque, arcu tellus interdum mauris,
-                vel eleifend nunc turpis ut purus."</p>
+              <img src="../assets/person3.jpg" alt="Customer 2" class="rounded-image">
+              <p class="customer-name">Ayoub Mliss</p>
+              <p class="review-description">"Beaucoup de models, tnajam tabaathelhom ay model wala ay théme theb alih yekhdmouhoulek, yatikom saha."</p>
               <img src="../assets/stars.svg" alt="Star Rating" class="star-rating">
             </div>
           </div>
           <div class="col-md-4">
             <div class="card testimonial-card">
-              <img src="path_to_customer_image_3" alt="Customer 3" class="rounded-image">
-              <p class="customer-name">Michael Johnson</p>
-              <p class="review-description">"Aenean consectetur neque dolor, at ullamcorper tellus interdum vel. Donec
-                sagittis sapien sit amet magna feugiat."</p>
+              <img src="../assets/person2.jpg" alt="Customer 3" class="rounded-image">
+              <p class="customer-name">Alma Belhaj</p>
+              <p class="review-description">"Fekra raw3a w service super, cette marque vas aller trés loin, merci pour l'innovation"</p>
               <img src="../assets/stars.svg" alt="Star Rating" class="star-rating">
             </div>
           </div>
@@ -483,6 +480,8 @@ export default {
   margin-bottom: 10px;
   display: block;
   background-color: white;
+  object-fit:cover; /* Choose the appropriate value */
+
 }
 
 #testimonials-section .customer-name {

@@ -4,19 +4,87 @@
             <h1>Love to hear from you</h1>
             <h1>Get in touch 👋🏼</h1>
         </div>
+
         <div class="container">
-            <form name="submit-to-google-sheet">
-                <input type="text" name="First-Name" placeholder="First name" required>
-                <input type="text" name="Last-Name" placeholder="Last Name" required>
-                <input type="email" name="Email" placeholder="E-mail adress" required>
-                <input type="text" name="Number" placeholder="Phone number" required>
-                <textarea name="Message" rows="3" placeholder="Your message"></textarea>
-                <button type="submit" class="btn">Submit</button>
+            <form @submit="Feedback">
+                <input type="text" name="First-Name" placeholder="First name" v-model="name" required>
+                <input type="text" name="Last-Name" placeholder="Last Name" v-model="family_name" required>
+                <input type="email" name="Email" placeholder="E-mail adress" v-model="email" required>
+                <input type="text" name="Number" placeholder="Phone number" v-model="phone" required>
+                <textarea name="Message" rows="3" placeholder="Your message" v-model="message" required></textarea>
+                <button class="btn">Submit</button>
             </form>
             <span id="msg"></span>
         </div>
     </div>
 </template>
+
+<script>
+import axios from 'axios';
+import HomeView from './HomeView.vue';
+
+export default {
+
+    data() {
+        return {
+            name: '',
+            family_name: '',
+            phone: '',
+            email: '',
+            message: '',
+        };
+    },
+    mounted() {
+        document.title = 'Contact | AFA'
+    },
+    methods: {
+
+        openModal() {
+            state.modal_demo.show()
+        },
+
+        closeModal() {
+            state.modal_demo.hide()
+        },
+
+
+        async Feedback() {
+
+            const data = {
+                'name': this.name,
+                'family_name': this.family_name,
+                'phone': this.phone,
+                'email': this.email,
+                'message': this.message,
+            }
+            
+            this.$store.commit('setIsLoading', true)
+            await axios
+                .post('/api/v1/contact/', data)
+                .then(response => {
+                    if (response.status == 201) {
+
+                        const routes = [
+  { path: '/', name: 'home', component: HomeView },
+  // ... other routes
+];
+
+                        this.$store.commit('setIsLoading', false)
+                        this.$router.push({ name: '../' });
+                    }
+                })
+                .catch(error => {
+                    this.$store.commit('setIsLoading', false)
+                    this.error.push('something went wrong. Please try again')
+                })
+
+
+
+
+        }
+    }
+};
+</script>
 
 <style scoped>
 h1 {
@@ -68,7 +136,7 @@ form textarea {
     border-image: linear-gradient(to right, #9671F6, #FD6756) 1;
 }
 
-form .btn {
+.btn {
     border: none;
     background-color: #8E2DE2;
     color: white;
@@ -76,7 +144,7 @@ form .btn {
     border-radius: 10px;
     font-size: 16px;
     margin-top: 4%;
-    margin-left: 35%;
+    margin-left: 40%;
     cursor: pointer;
     border-image: linear-gradient(to right, #9671F6, #FD6756) 1;
 }
@@ -137,13 +205,3 @@ form .btn {
     }
 }
 </style>
-
-<script>
-export default {
-    name: 'about',
-    data() {
-        return {
-        }
-    },
-}
-</script>

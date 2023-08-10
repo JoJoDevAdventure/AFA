@@ -8,6 +8,7 @@
 </template>
 
 <style scoped>
+
 #success {
     height: 20vh;
     justify-content: center;
@@ -15,6 +16,7 @@
     margin-top: 150px;
     margin-bottom: 100px;
 }
+
 h1 {
     color: white;
 

@@ -68,8 +68,7 @@ export default {
                     .catch(error => {
                         this.error.push('something went wrong. Please try again')
                     })
-
-                this.$store.commit('setIsLoading', true)
+                    this.$store.commit('setIsLoading', false)
 
             }
         }
